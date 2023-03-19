@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-// Socket
-import { io } from "socket.io-client";
-
 // Global States
 import { roomNumberSet } from "../store";
 import { useRecoilState } from "recoil";
@@ -15,14 +12,7 @@ import LobbyImg from "./LobbyImg";
 import InviteModal from "./InviteModal";
 
 // styles
-import {
-  LoginInfoWrapper,
-  LoginUserName,
-  LoginCreateJoinWrapper,
-  LoginCreateRoom,
-  LoginEnterRoomIn,
-  LoginSearchFeedBack,
-} from "../styles/components/Logged";
+import { LoginInfoWrapper, LoginUserName, LoginCreateJoinWrapper, LoginCreateRoom, LoginEnterRoomIn, LoginSearchFeedBack } from "../styles/components/Logged";
 
 interface StorageType {
   storageName: string;
@@ -37,10 +27,7 @@ const Logged = (props: StorageType) => {
 
   // 백엔드로 방생성 API Post 함수
   const pathCreateRoom = async () => {
-    const socket = io("http://localhost:3002", {
-      transports: ["websocket"],
-    });
-    const data = await fetch("http://localhost:3002/api/rooms", {
+    const data = await fetch("https://cotton-candy-study-backend.fly.devs/api/rooms", {
       method: "POST",
     });
     const json = await data.json();
@@ -60,22 +47,14 @@ const Logged = (props: StorageType) => {
 
   return (
     <>
-      {activityModal && (
-        <InviteModal handleActivityModalBtn={handleActivityModalBtn} />
-      )}
+      {activityModal && <InviteModal handleActivityModalBtn={handleActivityModalBtn} />}
       <LobbyImg />
       <LoginInfoWrapper>
         <LoginUserName>{userName}님, 환영합니다.</LoginUserName>
         <LoginCreateJoinWrapper>
-          <LoginCreateRoom onClick={pathCreateRoom}>
-            새로운 스터디룸 생성하기
-          </LoginCreateRoom>
-          <LoginEnterRoomIn onClick={handleActivityModalBtn}>
-            친구들의 스터디룸 입장하기 (초대코드)
-          </LoginEnterRoomIn>
-          <LoginSearchFeedBack onClick={pathFeedBack}>
-            피드백 검색하기
-          </LoginSearchFeedBack>
+          <LoginCreateRoom onClick={pathCreateRoom}>새로운 스터디룸 생성하기</LoginCreateRoom>
+          <LoginEnterRoomIn onClick={handleActivityModalBtn}>친구들의 스터디룸 입장하기 (초대코드)</LoginEnterRoomIn>
+          <LoginSearchFeedBack onClick={pathFeedBack}>피드백 검색하기</LoginSearchFeedBack>
         </LoginCreateJoinWrapper>
       </LoginInfoWrapper>
     </>
