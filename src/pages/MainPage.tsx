@@ -43,7 +43,7 @@ const MainPage = ({ MainPageProps }: UserType) => {
   const path = useNavigate();
   const rank = useLocation();
 
-  const socket = io("http://localhost:3002", {
+  const socket = io("https://cotton-candy-study-backend.fly.dev", {
     transports: ["websocket"],
   });
 
@@ -110,10 +110,7 @@ const MainPage = ({ MainPageProps }: UserType) => {
           <strong style={{ paddingBottom: "16px" }}>유저 리스트</strong>
           {userList.map((data, i) => (
             <UserInfo key={i}>
-              <img
-                src="../src/assets/circle-user-solid.svg"
-                style={{ marginRight: "4px", width: "16px" }}
-              />
+              <img src="../src/assets/circle-user-solid.svg" style={{ marginRight: "4px", width: "16px" }} />
               <span>{data}</span>
               {data === userList[0] && <Label>방장</Label>}
             </UserInfo>
@@ -133,9 +130,7 @@ const MainPage = ({ MainPageProps }: UserType) => {
         </MainPageBtnWrap>
       ) : (
         <MainPageBtnWrap>
-          <DrawingDisabled className="norank">
-            {userList[0]} 님만 뽑을수있습니다.
-          </DrawingDisabled>
+          <DrawingDisabled className="norank">{userList[0]} 님만 뽑을수있습니다.</DrawingDisabled>
           <RouletteBtn onClick={handleShowFeedBack}>피드백 남기기</RouletteBtn>
         </MainPageBtnWrap>
       )}

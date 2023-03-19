@@ -38,7 +38,7 @@ const InviteModal = (props: ModalType) => {
    *   - 백엔드 api로 post요청을하여, DB상에 생성된 방이 있는지 검증 후 true일 경우 방 참여
    */
   const handleEnterRoomInBtn = async () => {
-    const data = await fetch("https://cotton-candy-study-backend.fly.devs/api/rooms/inviteCode", {
+    const data = await fetch("https://cotton-candy-study-backend.fly.dev/api/rooms/inviteCode", {
       method: "POST",
       body: new URLSearchParams({
         inviteCode: `${roomNum}`,
