@@ -21,6 +21,29 @@ export const WheelWrap = styled.div`
   margin: 4rem 0;
 `;
 
+// 발표 순서
+export const Presentation = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 800px;
+  overflow: auto;
+  height: 400px;
+  border: 1px solid #ebebeb;
+  border-radius: 1rem;
+`;
+
+export const PresentationList = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1rem;
+
+  div {
+    margin-bottom: 1rem;
+  }
+`;
+
 // 발표자 피드백 남기기 / 룰렛 돌리기 버튼
 export const ButtonWrap = styled.div`
   width: 100%;

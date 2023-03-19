@@ -3,18 +3,17 @@ import styled from "@emotion/styled";
 import box from "../../assets/question_box.png";
 
 export const LotsBoxWrap = styled.div`
-  background-color: aliceblue;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  margin: 0 auto;
+  margin: 0 1rem;
 `;
 
 export const DefaultLotsBox = styled.div`
+  margin: 6rem 0;
   width: 200px;
   height: 200px;
-  margin: 0.4rem;
   background-image: url(${box});
   background-size: cover;
   transform-origin: 50% 0%;
@@ -30,9 +29,9 @@ const shake = keyframes`
 `;
 
 export const ShakingLotsBox = styled.div`
+  margin: 6rem 0;
   width: 200px;
   height: 200px;
-  margin: 0.4rem;
   background-image: url(${box});
   background-size: cover;
   transform-origin: 50% 0%;
@@ -43,6 +42,14 @@ export const ShakingLotsBox = styled.div`
   animation-delay: 0.2s;
 `;
 
+// 버튼 묶음
+export const ButtonWrap = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+`;
+
 export const LotsBtn = styled.button`
   font-weight: 600;
   color: white;
@@ -50,4 +57,22 @@ export const LotsBtn = styled.button`
   background-color: #ff6868;
   border-radius: 0.5rem;
   padding: 1rem;
+  margin-bottom: 1rem;
+`;
+
+export const LotsFeedBtn = styled.button`
+  padding: 1rem;
+  font-weight: 600;
+  background-color: #fce9aa;
+  border-radius: 0.5rem;
+  text-align: center;
+  margin-bottom: 1rem;
+`;
+
+export const LotsExitBtn = styled.button`
+  padding: 1rem;
+  font-weight: 600;
+  background-color: #d6dbff;
+  border-radius: 0.5rem;
+  text-align: center;
 `;

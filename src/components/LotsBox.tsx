@@ -12,7 +12,17 @@ import { useNavigate } from "react-router-dom";
 import FeedBackModal from "../components/FeedBackModal";
 
 // styles
-import { LotsBoxWrap, LotsBtn, DefaultLotsBox, ShakingLotsBox } from "../styles/components/LotsBox";
+import {
+  LotsBoxWrap,
+  LotsBtn,
+  DefaultLotsBox,
+  ShakingLotsBox,
+  ButtonWrap,
+  LotsFeedBtn,
+  LotsExitBtn,
+} from "../styles/components/LotsBox";
+import { ApplicationTitle } from "../styles/components/ApplicationTitle";
+import { PresentationList } from "../styles/pages/RoulettePage";
 
 interface UserType {
   userDataArr: string[];
@@ -30,7 +40,8 @@ const LotsBox = ({ userDataArr }: UserType) => {
   // 뽑힌 사람들이 역순으로 들어간 배열 state
   const [pickupData, setPickupData] = useState<string[]>([]);
   // 피드백 모달 여부 확인
-  const [isActivityFeedBackModal, setIsActivityFeedBackModal] = useRecoilState(IsFeedBackModal);
+  const [isActivityFeedBackModal, setIsActivityFeedBackModal] =
+    useRecoilState(IsFeedBackModal);
 
   const path = useNavigate();
 
@@ -52,8 +63,6 @@ const LotsBox = ({ userDataArr }: UserType) => {
     const userLength = userData.length - 1;
     // 뽑혔을때 Confetti 터짐 state -> false로 변경
     setIsShakeConfetti(false);
-    // 뽑혔을때 박스 흔들림 state -> false로 변경
-    setIsShakeBox(false);
     // userDataArr의 길이만큼 랜덤으로 인덱스 값 설정
     setUserIdx(Math.floor(Math.random() * userLength));
     // 뽑힌사람 알려주기
@@ -67,6 +76,8 @@ const LotsBox = ({ userDataArr }: UserType) => {
       userData.splice(userIdx, 1);
       // 제외한 데이터 저장
       setUserData([...userData]);
+      // 박스 흔들림 멈춤
+      setIsShakeBox(false);
       return;
     }
     // 그 외
@@ -85,27 +96,49 @@ const LotsBox = ({ userDataArr }: UserType) => {
 
   return (
     <LotsBoxWrap>
-      <h1>제비 뽑기</h1>
+      <ApplicationTitle>제비 뽑기</ApplicationTitle>
       {/* 1. 솜사탕 작업 목록  isInFeedBackModal 값에 따라 피드백 컴포넌트 렌더링 */}
       {isActivityFeedBackModal && <FeedBackModal userDataArr={pickupData} />}
-      {isShakeConfetti ? <Confetti recycle={false} gravity={0.5} /> : null}
+      {isShakeConfetti ? (
+        <Confetti
+          style={{
+            overflow: "hidden",
+          }}
+          recycle={false}
+          gravity={0.5}
+        />
+      ) : null}
       {isShakeBox ? <ShakingLotsBox /> : <DefaultLotsBox />}
+      {/* 뽑힌 사람들 보여주기 */}
+      {pickupData.length !== 0 && (
+        <>
+          <strong
+            style={{
+              padding: "1rem 0",
+              borderBottom: "1px solid #ccc",
+            }}
+          >
+            🚗 발표 순서 🚙
+          </strong>
+          <PresentationList>
+            {pickupData.map((item, i) => (
+              <div key={i}>{item}</div>
+            ))}
+          </PresentationList>
+        </>
+      )}
       {userData.length === 0 ? (
         // userData.length 값이 0일시 피드백을 남길수 있는 함수 컴포넌트로 렌더링
-        <div style={{ width: "100%", display: "flex", justifyContent: "space-between" }}>
-          <LotsBtn onClick={handleFeedBackBtn}>피드백 남기기</LotsBtn>
-          <LotsBtn onClick={goRoot}>나가기</LotsBtn>
-        </div>
+        <ButtonWrap>
+          <LotsFeedBtn onClick={handleFeedBackBtn}>피드백 남기기</LotsFeedBtn>
+          <LotsExitBtn onClick={goRoot}>나가기</LotsExitBtn>
+        </ButtonWrap>
       ) : (
-        <div style={{ width: "100%", display: "flex", justifyContent: "space-between" }}>
-          <LotsBtn onClick={onShakeBox}>제비뽑기 시작</LotsBtn>
-          <LotsBtn onClick={goRoot}>나가기</LotsBtn>
-        </div>
+        <ButtonWrap>
+          <LotsBtn onClick={onShakeBox}>순서 뽑기</LotsBtn>
+          <LotsExitBtn onClick={goRoot}>방 나가기</LotsExitBtn>
+        </ButtonWrap>
       )}
-      {/* 뽑힌 사람들 보여주기 */}
-      {pickupData.map((item, i) => (
-        <span key={i}>{item}</span>
-      ))}
     </LotsBoxWrap>
   );
 };
