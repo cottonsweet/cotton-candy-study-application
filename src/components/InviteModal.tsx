@@ -38,12 +38,15 @@ const InviteModal = (props: ModalType) => {
    *   - 백엔드 api로 post요청을하여, DB상에 생성된 방이 있는지 검증 후 true일 경우 방 참여
    */
   const handleEnterRoomInBtn = async () => {
-    const data = await fetch("https://cotton-candy-study-backend.fly.dev/api/rooms/inviteCode", {
-      method: "POST",
-      body: new URLSearchParams({
-        inviteCode: `${roomNum}`,
-      }),
-    });
+    const data = await fetch(
+      "https://cotton-candy-study-backend.fly.dev/api/rooms/inviteCode",
+      {
+        method: "POST",
+        body: new URLSearchParams({
+          inviteCode: `${roomNum}`,
+        }),
+      }
+    );
     const json = await data.json();
 
     if (json.result) {
@@ -71,11 +74,20 @@ const InviteModal = (props: ModalType) => {
       <InviteModalBg>
         <InviteModalTitle>초대번호를 입력해주세요</InviteModalTitle>
         <InviteModalInfoWrap>
-          <InviteModalInput type="number" name="roomcode" onChange={handleInviteNumberChange} />
+          <InviteModalInput
+            autoFocus
+            type="number"
+            name="roomcode"
+            onChange={handleInviteNumberChange}
+          />
           <InviteModalBtnWrapper>
-            <InviteModalCancleBtn onClick={handleModalCancleBtn}>취소</InviteModalCancleBtn>
+            <InviteModalCancleBtn onClick={handleModalCancleBtn}>
+              취소
+            </InviteModalCancleBtn>
             {numberOk ? (
-              <InviteModalJoinBtnActive onClick={handleEnterRoomInBtn}>입장</InviteModalJoinBtnActive>
+              <InviteModalJoinBtnActive onClick={handleEnterRoomInBtn}>
+                입장
+              </InviteModalJoinBtnActive>
             ) : (
               <InviteModalJoinBtnDisabled>입장</InviteModalJoinBtnDisabled>
             )}
