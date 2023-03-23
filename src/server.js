@@ -3,7 +3,7 @@ import express from "express";
 import http from "http";
 import { Server } from "socket.io";
 import globalRouter from "./Routers/globalRouter.js";
-import feadbackRouter from "./Routers/feadbackRouter.js";
+import feedbackRouter from "./Routers/feedbackRouter.js";
 import path from "path";
 import Room from "./Models/room.js";
 import apiRouter from "./Routers/apiRouter.js";
@@ -16,7 +16,7 @@ const __dirname = path.resolve();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use("/assets", express.static(__dirname+"/dist/assets"));
-app.use("/feadback", feadbackRouter );
+app.use("/feedback", feedbackRouter );
 app.use("/", globalRouter);
 app.use("/api", apiRouter);
 
