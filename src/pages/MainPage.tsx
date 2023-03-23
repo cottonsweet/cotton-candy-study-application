@@ -8,7 +8,10 @@ import { io } from "socket.io-client";
 import { useRecoilValue, useRecoilState } from "recoil";
 import { roomNumberSet, IsFeedBackModal } from "../store";
 
+// components
 import FeedBackModal from "../components/FeedBackModal";
+import UserIcons from "../components/icons/UserIcons"
+import CopyIcons from "../components/icons/CopyIcons"
 
 // styles
 import { ApplicationTitle } from "../styles/components/ApplicationTitle";
@@ -99,7 +102,7 @@ const MainPage = ({ MainPageProps }: UserType) => {
         >
           스터디 방 {roomNum}
           <InviteCodeBtn onClick={copyInviteCode}>
-            <img src="../src/assets/copy-regular.svg" width="12px" />
+            <CopyIcons  />
             <span>복사</span>
           </InviteCodeBtn>
         </div>
@@ -110,7 +113,7 @@ const MainPage = ({ MainPageProps }: UserType) => {
           <strong style={{ paddingBottom: "16px" }}>유저 리스트</strong>
           {userList.map((data, i) => (
             <UserInfo key={i}>
-              <img src="../src/assets/circle-user-solid.svg" style={{ marginRight: "4px", width: "16px" }} />
+              <UserIcons />
               <span>{data}</span>
               {data === userList[0] && <Label>방장</Label>}
             </UserInfo>
