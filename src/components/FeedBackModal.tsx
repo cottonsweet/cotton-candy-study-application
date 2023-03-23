@@ -35,7 +35,7 @@ const FeedBackModal = (props: ModalType) => {
   const submitFeedBackPost = async (e: React.FormEvent) => {
     e.preventDefault();
     const myName = localStorage.getItem("StudyName");
-    await fetch("https://cotton-candy-study-backend.fly.dev/feadback/create", {
+    await fetch("https://cotton-candy-study-backend.fly.dev/feedback/create", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

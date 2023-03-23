@@ -20,7 +20,7 @@ type Feedback = Record<"roomCode" | "evaluatedName" | "content" | "_id" | "__v" 
 
 interface Response {
   evaluatedName: string;
-  feadbacks: Feedback[];
+  feedbacks: Feedback[];
   __v: number;
   _id: string;
 }
@@ -36,7 +36,7 @@ const FeedBackPage = () => {
   // 사용자의 피드백 히스토리 서버로부터 Get 요청
   const getFeedBackUserName = async (e: React.FormEvent) => {
     e.preventDefault();
-    const data = await fetch(`https://cotton-candy-study-backend.fly.dev/feadback/myfeadback?iam=${userName}`);
+    const data = await fetch(`https://cotton-candy-study-backend.fly.dev/feedback/myfeedback?iam=${userName}`);
     const json = await data.json();
     if (json.message) return alert("피드백 사용자가 없습니다.");
     setFeedBackData(json);
@@ -53,7 +53,7 @@ const FeedBackPage = () => {
       </FeedBackGetUserWrap>
 
       <FeedBackSection>
-        {feedbackData?.feadbacks?.map((data, i) => {
+        {feedbackData?.feedbacks?.map((data, i) => {
           return (
             <FeedBackInfo key={i}>
               <FeedBackUserHeaderInfo>
