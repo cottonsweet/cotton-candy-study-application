@@ -63,6 +63,7 @@ wsServer.on("connection", (socket) => {
     });
   });
   
-  server.listen(3002, () => {
+  const port = process.env.PORT || 8080;
+  server.listen(port, "0.0.0.0", () => {
     console.log("*****HTTP/WS SERVER ON*****");
   });
