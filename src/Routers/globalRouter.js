@@ -4,8 +4,9 @@ import cors from "cors";
 
 const __dirname = path.resolve();
 const globalRouter = express.Router();
+const frontUrl = process.env.FRONT_URL || "https://cottoncandy-study.netlify.app";
 
-globalRouter.use("/", cors({ origin: "http://localhost:5173" }));
+globalRouter.use("/", cors({ origin: frontUrl }));
 globalRouter.route("*").get( (req, res) => {
     return res.sendFile(path.join(__dirname, 'dist/index.html'));
 });

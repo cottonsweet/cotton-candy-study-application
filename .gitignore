@@ -27,3 +27,7 @@ dist-ssr
 ## custom
 pnpm-lock.yaml
 *.http
+fly.toml
+build
+Dockerfile
+.dockerignore
