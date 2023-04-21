@@ -24,8 +24,6 @@ interface ModalType {
 }
 
 const InviteModal = (props: ModalType) => {
-  const userName = localStorage.getItem("StudyName");
-  const [inviteNum, setInviteNum] = useState<Number>();
   const [numberOk, isNumberOk] = useState(false);
   const [roomNum, setRoomNum] = useRecoilState(roomNumberSet);
 
