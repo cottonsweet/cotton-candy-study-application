@@ -36,7 +36,6 @@ interface UserType {
 }
 
 const MainPage = ({ MainPageProps }: UserType) => {
-  const [userMsg, setUserMsg] = useState<string[]>([]);
   const [userList, setUserList] = useState<string[]>([]);
   const roomNum = useRecoilValue(roomNumberSet);
   const [modal, setModal] = useRecoilState(IsFeedBackModal);
@@ -84,6 +83,7 @@ const MainPage = ({ MainPageProps }: UserType) => {
     path("/random/lots");
   };
 
+  // 피드백 모달 열기 함수
   const handleShowFeedBack = () => {
     setModal(true);
   };
