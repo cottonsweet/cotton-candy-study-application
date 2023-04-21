@@ -21,6 +21,7 @@ import {
   RuletteGoRootBtn,
   WheelWrap,
 } from "../styles/pages/RoulettePage";
+
 import { ApplicationTitle } from "../styles/components/ApplicationTitle";
 
 interface UserType {
@@ -84,6 +85,7 @@ const RoulettePage = ({ userDataArr }: UserType) => {
     setModal(true);
   };
 
+  // 홈으로
   const goRoot = () => path("/");
 
   return (
