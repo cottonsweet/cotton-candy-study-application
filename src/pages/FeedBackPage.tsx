@@ -42,6 +42,7 @@ const FeedBackPage = () => {
     setFeedBackData(json);
   };
 
+  // 홈으로
   const goRoot = () => path("/");
 
   return (
