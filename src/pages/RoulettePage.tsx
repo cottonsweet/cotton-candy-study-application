@@ -33,7 +33,7 @@ interface UserData {
 }
 
 const RoulettePage = ({ userDataArr }: UserType) => {
-  // spin start or stop state
+  // 룰렛 스핀 시작여부
   const [mustSpin, setMustSpin] = useState(false);
   // 당첨자의 배열 인덱싱
   const [prizeNumber, setPrizeNumber] = useState(0);
@@ -81,9 +81,7 @@ const RoulettePage = ({ userDataArr }: UserType) => {
   };
 
   // 피드백 모달 true or false
-  const handleFeedBackBtn = () => {
-    setModal(true);
-  };
+  const handleFeedBackBtn = () => setModal(true);
 
   // 홈으로
   const goRoot = () => path("/");
