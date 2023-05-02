@@ -82,7 +82,7 @@
 - React: 컴포넌트 기반의 화면구성, Virtual DOM으로 인한 속도 향상, SPA(싱글 페이지 애플리케이션)
 - TypeScript: 초기 데이터와 컴포넌트 사이에 전달되는 데이터의 컴파일 오류를 방지하기 위해 사용
 - Fetch: 데이터 패칭시 로딩, 에러 state 관리 및 API 통신 위해 사용
-- Emotion: 변수로 css 유지보수가 용이하기 위해 사용
+- Emotion: 재사용 컴포넌트 구성
 - Vite: build 속도를 빠르게 하기 위해 사용
 - LocalStorage: 사용자 데이터 저장 및 로그인 기능 구현을 위해 사용
 - Recoil : 보다 쉬운 전역 상태관리 및 Props Drilling을 해결하기 위해 사용
