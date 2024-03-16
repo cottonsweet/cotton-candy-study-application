@@ -27,7 +27,8 @@ const Logged = (props: StorageType) => {
 
   // 백엔드로 방생성 API Post 함수
   const pathCreateRoom = async () => {
-    const data = await fetch("https://cotton-candy-study-backend.fly.dev/api/rooms", {
+    const BASE_APi = import.meta.env.VITE_REACT_APP_API_KEY
+    const data = await fetch(`${BASE_APi}/api/rooms`, {
       method: "POST",
     });
     const json = await data.json();
