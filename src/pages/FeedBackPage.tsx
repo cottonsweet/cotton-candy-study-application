@@ -36,7 +36,8 @@ const FeedBackPage = () => {
   // 사용자의 피드백 히스토리 서버로부터 Get 요청
   const getFeedBackUserName = async (e: React.FormEvent) => {
     e.preventDefault();
-    const data = await fetch(`https://cotton-candy-study-backend.fly.dev/feedback/myfeedback?iam=${userName}`);
+    const BASE_APi = import.meta.env.VITE_REACT_APP_API_KEY
+    const data = await fetch(`${BASE_APi}/feedback/myfeedback?iam=${userName}`);
     const json = await data.json();
     if (json.message) return alert("피드백 사용자가 없습니다.");
     setFeedBackData(json);

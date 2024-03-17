@@ -44,8 +44,8 @@ const MainPage = ({ MainPageProps }: UserType) => {
   const inviteCode = window.location.pathname.substring(8);
   const path = useNavigate();
   const rank = useLocation();
-
-  const socket = io("https://cotton-candy-study-backend.fly.dev", {
+  const BASE_APi = import.meta.env.VITE_REACT_APP_API_KEY
+  const socket = io(BASE_APi, {
     transports: ["websocket"],
   });
 
